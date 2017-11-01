@@ -38,7 +38,6 @@ def get_licence_details(text):
             dob = dob[0:2] + '/' + dob[2:4]+'/'+dob[4:8]
             # dob = dob[3:5] + '/' + dob[5:]
             date.append(dob)
-            print("dob",dob)
 
         for value in date[:3]:
             import datetime
