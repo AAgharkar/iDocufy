@@ -138,20 +138,7 @@ $(document).on('load', '.file', function(){
 
 <div class="container" id="main" >
     <div class="row">
-
-            <div class="col-md-6">
-                <div class="panel panel-success">
-                    <div class="panel-heading"><h4 style="text-align:center">Image Text</h4></div>
-                        <div class="panel-body">
-                            <p style="vertical-align: left">
-                                     <textarea id="textarea1" class="form-control" disabled rows="14" placeholder="Image Test" style="display: inline;text-align: justify;white-space:pre-line;word-break: keep-all;word-wrap: break-word;" >
-                                       {{text}}
-                                     </textarea>
-                            </p>
-                        </div>
-                     </div>
-                </div>
-        <div class="col-md-6">
+<div class="col-md-6">
                 <div class="panel panel-success">
                     <div class="panel-heading"><h4 style="text-align:center">Image Text</h4></div>
                         <div class="panel-body">
@@ -159,25 +146,32 @@ $(document).on('load', '.file', function(){
                         </div>
                      </div>
                 </div>
-    </div>
-</div>
-
-<div class="container" id="sub_menu" >
-    <div class="row">
-
-            <div class="col-md-6">
+            <!--<div class="col-md-3">-->
+                <!--<div class="panel panel-success">-->
+                    <!--<div class="panel-heading"><h4 style="text-align:center">Image Text</h4></div>-->
+                        <!--<div class="panel-body">-->
+                            <!--<p style="vertical-align: left">-->
+                                     <!--<textarea id="textarea1" class="form-control" disabled rows="14" placeholder="Image Test" style="display: inline;text-align: justify;white-space:pre-line;word-break: keep-all;word-wrap: break-word;" >-->
+                                       <!--{{text}}-->
+                                     <!--</textarea>-->
+                            <!--</p>-->
+                        <!--</div>-->
+                     <!--</div>-->
+                <!--</div>-->
+         <div class="col-md-3">
                 <div class="panel panel-success">
                     <div class="panel-heading"><h4 style="text-align:center">Data</h4></div>
                         <div class="panel-body">
-                          <label>Licence Id: {{licence_id}}</label><br/>
-                            <label>Date:  {% for date in dob %}
-                                         {{date}}<br/>
-                                            {% endfor %}</label>
+                          <label>Licence Id: </label> <p>{{licence_id}}</p><br/>
+                            <label>Date Of Birth: </label><p>{{min_date}}</p><br/>
+                            <label>Issue Date: </label><p>{{iss_date}}</p><br/>
+                            <label>Expiry Date: </label><p>{{max_date}}</p>
 
                         </div>
                      </div>
                 </div>
- </div>
- </div>
+
+    </div>
+</div>
 
 </body>
