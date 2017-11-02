@@ -24,7 +24,8 @@ def allowed_file(filename):
 
 @app.route("/", methods=['GET', 'POST'])
 def index():
-    return render_template('Index.html')
+    field=['abc','abc','abc','abc','abc','abc','abc','abc','abc','abc','abc']
+    return render_template('Index.html',field=field)
 
 @app.route("/show", methods=['POST'])
 def show():
@@ -43,6 +44,7 @@ def show():
                 thread.start()
                 text= output_doc.get()
                 licence_id,max_date,min_date,iss_date=Licence_Details.get_licence_details(text)
+
             else:
                 error = "Please Upload jpg or png image"
                 return render_template('Index.html', error=error)

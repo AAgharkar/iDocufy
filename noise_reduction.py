@@ -12,7 +12,7 @@ def process_image(image, val):
     dst = cv2.fastNlMeansDenoising(img, None, val, 7, 21)
     img2pil = Image.fromarray(dst)
     enhancer = ImageEnhance.Sharpness(img2pil)
-    sharp = enhancer.enhance(1.8)
+    sharp = enhancer.enhance(2.8)
     img2cv = np.asarray(sharp)
     return img2cv
 def image_conversion_smooth(path):
