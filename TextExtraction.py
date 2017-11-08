@@ -24,8 +24,8 @@ def allowed_file(filename):
 
 @app.route("/", methods=['GET', 'POST'])
 def index():
-    field=['abc','abc','abc','abc','abc','abc','abc','abc','abc','abc','abc']
-    return render_template('Index.html',field=field)
+
+    return render_template('Index.html')
 
 @app.route("/show", methods=['POST'])
 def show():
@@ -43,7 +43,8 @@ def show():
                 thread = threading.Thread(target=get_doc, args=(image_path,))
                 thread.start()
                 text= output_doc.get()
-                licence_id,max_date,min_date,iss_date=Licence_Details.get_licence_details(text)
+                licence_id, max_date, min_date, iss_date=Licence_Details.get_licence_details1(text)
+                # licence_id,max_date,min_date,iss_date = Licence_Details.get_licence_details1(text)
 
             else:
                 error = "Please Upload jpg or png image"
@@ -51,6 +52,7 @@ def show():
             # return render_template('Show.html', text=text,image=tail)
             return render_template('Show.html', text=text,image=tail,licence_id=licence_id,max_date=max_date,min_date=min_date,iss_date=iss_date)
     except Exception as E:
+        print(E)
         error = "Licence ID not Detected"
         return render_template('Index.html', error=error)
 
@@ -59,4 +61,4 @@ if __name__ == "__main__":
 
     sess.init_app(app)
     # app.run(host='localhost', port=5004, debug=True, threaded=True)
-    app.run(host='192.168.0.224', port=1234, debug=True,threaded=True)
+    app.run(host='192.168.0.224', port=5004, debug=True,threaded=True)

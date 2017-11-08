@@ -16,7 +16,7 @@ def get_cropped_image(IMAGE_PATH):
     # cv2.waitKey(0)
 
     # applying closing function
-    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (13, 20))
+    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (80, 20))
     closed = cv2.morphologyEx(edged, cv2.MORPH_CLOSE, kernel)
     # cv2.imshow("Closed", closed)
     # cv2.waitKey(0)

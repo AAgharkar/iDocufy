@@ -3,18 +3,20 @@ import numpy as np
 from PIL import Image,ImageEnhance
 
 def mean_using_mb(image):
-    median = cv2.medianBlur(image.copy(), 3)
+    median = cv2.GaussianBlur(image.copy(), (3,3),0)
     res = abs(image - median)
     res_mean = np.mean(res)
     return res_mean
 def process_image(image, val):
-    img = cv2.GaussianBlur(image.copy(), (3, 3), 0)
-    dst = cv2.fastNlMeansDenoising(img, None, val, 7, 21)
-    img2pil = Image.fromarray(dst)
-    enhancer = ImageEnhance.Sharpness(img2pil)
-    sharp = enhancer.enhance(2.8)
-    img2cv = np.asarray(sharp)
-    return img2cv
+    img = cv2.GaussianBlur(image.copy(), (3, 3),0)
+    dst = cv2.fastNlMeansDenoising(img.copy(), None, val, 7, 21)
+    kernel = np.ones((2, 2), np.float32)
+    erode = cv2.erode(dst, kernel, iterations=1)
+    # img2pil = Image.fromarray(erode)
+    # enhancer = ImageEnhance.Sharpness(img2pil)
+    # sharp = enhancer.enhance(4.5)
+    # img2cv = np.asarray(sharp)
+    return erode
 def image_conversion_smooth(path):
     img = cv2.imread(path)
     # height, width = img.shape
