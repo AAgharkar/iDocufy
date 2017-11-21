@@ -3,7 +3,7 @@ import numpy as np
 from PIL import Image,ImageEnhance
 
 def mean_using_mb(image):
-    median = cv2.GaussianBlur(image.copy(), (3,3),0)
+    median = cv2.medianBlur(image.copy(), 3)
     res = abs(image - median)
     res_mean = np.mean(res)
     return res_mean
@@ -11,7 +11,7 @@ def process_image(image, val):
     img = cv2.GaussianBlur(image.copy(), (3, 3),0)
     dst = cv2.fastNlMeansDenoising(img.copy(), None, val, 7, 21)
     kernel = np.ones((1, 2), np.float32)
-    erode = cv2.erode(dst, kernel, iterations=1)
+    erode = cv2.erode(dst, kernel, iterations=0)
     # img2pil = Image.fromarray(erode)
     # enhancer = ImageEnhance.Sharpness(img2pil)
     # sharp = enhancer.enhance(4.5)

@@ -1,6 +1,6 @@
 import re
 from flask import render_template
-
+import datetime
 # def get_licence_details(text):
 #     try:
 #         #print(text)
@@ -57,8 +57,13 @@ from flask import render_template
 def get_licence_details1(text):
     get_licence_id=get_id(text)
     max_date, min_date, iss_date=get_date(text)
-    address=get_address(text)
-    return get_licence_id,max_date,min_date,iss_date,address
+    address,street=get_address(text)
+    if street==None:
+       name=get_name_afterdate(text,max_date)
+    else:
+        name=get_name(text,street)
+    # address=None
+    return get_licence_id,max_date,min_date,iss_date,address,name
 def find_between_r(s, first, last):
     try:
         start = s.index(first) + len(first)
@@ -85,6 +90,7 @@ def get_id(text):
         return render_template('Index.html', error=error)
 def get_date(text):
     try:
+
         date_val, date, actual_date = [], [], []
         val = re.findall(
             r'(\w*[A-Za-z]\d{1}\d{2}[./-](19|20|21|22|23|24)\d\d)|(\w*[A-Za-z]\d{1}[./-]\d{2}[./-](19|20|21|22|23|24)\d\d)'
@@ -137,7 +143,7 @@ def get_date(text):
         #     date.append(" ".join(item))
         # #print(date)
         for value in date[:3]:
-            import datetime
+
             if re.match(r'\b\d{2}[./-]\d{2}[./-]\d{2}\b', value):
                 actual_date.append(datetime.datetime.strptime(value, '%m/%d/%y').strftime('%y/%m/%d'))
             else:
@@ -150,25 +156,32 @@ def get_date(text):
             for date in actual_date:
                 if date > iss_date and date < min_date:
                     max_date = date
-            max_date = datetime.datetime.strptime(max_date, '%y/%m/%d').strftime('%m/%d/%y')
-            min_date = datetime.datetime.strptime(min_date, '%y/%m/%d').strftime('%m/%d/%y')
-            iss_date = datetime.datetime.strptime(iss_date, '%y/%m/%d').strftime('%m/%d/%y')
+            if max_date != "" or min_date != "" or iss_date != "":
+                max_date = datetime.datetime.strptime(max_date, '%y/%m/%d').strftime('%m/%d/%y')
+                min_date = datetime.datetime.strptime(min_date, '%y/%m/%d').strftime('%m/%d/%y')
+                iss_date = datetime.datetime.strptime(iss_date, '%y/%m/%d').strftime('%m/%d/%y')
+            else:
+                max_date,min_date,iss_date=None,None,None
         else:
             max_date = max(actual_date)
             min_date = min(actual_date)
             for date in actual_date:
                 if date > min_date and date < max_date:
                     iss_date = date
-            max_date = datetime.datetime.strptime(max_date, '%Y/%m/%d').strftime('%m/%d/%Y')
-            min_date = datetime.datetime.strptime(min_date, '%Y/%m/%d').strftime('%m/%d/%Y')
-            iss_date = datetime.datetime.strptime(iss_date, '%Y/%m/%d').strftime('%m/%d/%Y')
+            if max_date!=None or min_date!=None or iss_date!=None:
+                max_date = datetime.datetime.strptime(max_date, '%Y/%m/%d').strftime('%m/%d/%Y')
+                min_date = datetime.datetime.strptime(min_date, '%Y/%m/%d').strftime('%m/%d/%Y')
+                iss_date = datetime.datetime.strptime(iss_date, '%Y/%m/%d').strftime('%m/%d/%Y')
+            else:
+                max_date,min_date,iss_date=None,None,None
         return max_date,min_date,iss_date
     except Exception as E:
         print(E)
-        error = "Unable to detect date"
-        return render_template('Index.html', error=error)
+        max_date, min_date, iss_date = None, None, None
+        return max_date, min_date, iss_date
 def get_address(value):
     try:
+        zip_code=[]
         text = ''.join(map(str, value))
         print(text)
         all_number = re.findall(
@@ -181,20 +194,59 @@ def get_address(value):
         data = re.findall(
             r"((?=AL|AK|AS|AZ|AR|CA|CO|CT|DE|DC|FM|FL|GA|GU|HI|ID|IL|IN|IA|KS|KY|LA|ME|MH|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|"
             r"NC|ND|MP|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN|TX|UT|VT|VI|VA|WA|WV|WI|WY)[A-Z]{2}[, ])"
-            r"(\d{5}(?:-\d{4})?|\d{4}(?:-\d{4})?|\d{3}(?:\s\d{2})|\d{3}(?:\s\d{1}\s\d{1})"
+            r"(\d{5}(?:-\d{4})|\d{4}(?:-\d{4})?|\d{3}(?:\s\d{2})|\d{3}(?:\s\d{1}\s\d{1})"
             r"|\d{2,5}(?:\s\d{2,5})(?:-\d{4})?)",number_val)
         for item in data:
-            zip_code="".join(item)
-        for i in range(len(zip_code)):
-            if re.search(r"\d{2,3}\s\w*,",number_val):
-                street=''.join(map(str, number_val.split(zip_code, 1)[0].split()[-4]))
-            else:
-                street=''.join(map(str, number_val.split(zip_code, 1)[0].split()[-2]))
-        address=find_between_r(text,street,zip_code)
-        print(street +address +zip_code)
-        full_address=street +address +zip_code
-        return full_address
+            zip_code.append("".join(item))
+        print(zip_code)
+        if re.search(r"\d{2,3}\s\w*\,",number_val):
+            street=''.join(map(str, number_val.split(zip_code[0], 1)[0].split()[-4]))
+        else:
+            street=''.join(map(str, number_val.split(zip_code[0], 1)[0].split()[-2]))
+
+        address=find_between_r(text,street,zip_code[0])
+        print(street +address +zip_code[0])
+        full_address=street +address +zip_code[0]
+        return full_address,street
     except Exception as E:
         print(E)
+        full_address,street=None,None
+        return full_address, street
+def get_name(value,street):
+    try:
+        name = ' '.join(map(str, value.split(street, 1)[0].split()[-4:]))
+        print(name)
+        name_regex=re.findall(r'[A-Za-z]\w*\b',name)
+        print(name_regex)
+        actual_name=" ".join(map(str,name_regex))
+        name_reg=re.findall(r'[A-Z]\w{2,}\s\w*[A-Za-z]\s?[A-Z]?',actual_name)
+        print(name_reg)
+        full_name=" ".join(map(str,name_reg))
+        full_name = full_name.replace('Expires', "")
+        full_name = full_name.replace('Name', "")
+        full_name = full_name.replace('Address', "")
+        full_name = full_name.replace('CLASS D', "")
+        return full_name
+    except Exception as e:
+        full_name=None
+        return full_name
+def get_name_afterdate(value,date):
+    print(date)
+    if re.match(r'\d{2}\/\d{2}\/\d{4}',value):
+        date=date
+    if re.match(r'\d{2}.\d{2}.\d{4}',value):
+        date = date.replace("/", ".")
+    else:
+        date = date.replace("/", "-")
+    name = ''.join(map(str, value.split(date, 1)[-1]))
+    # name=value.
+    print("spilt",name)
+    full_name = re.findall(r'[A-Za-z]\w*\s\w*[A-Za-z]\s?[A-Z]?', name)
+    full_name[0] = full_name[0].replace('Expires', "")
+    full_name[0] = full_name[0].replace('Name', "")
+    full_name[0] = full_name[0].replace('Address', "")
+    full_name[0] = full_name[0].replace('ЈозEPH', "ЈOSEPH")
+    return full_name[0]
+
 
 

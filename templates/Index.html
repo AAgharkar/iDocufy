@@ -1,0 +1,151 @@
+
+<!doctype html>
+<meta charset="utf-8">
+<head><title>iDocufy</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+<style>
+
+.file {
+visibility: hidden;
+position: absolute;
+}
+
+label.btn span {
+font-size: 1em ;
+}
+
+label input[type="radio"] ~ i.fa.fa-circle-o{
+color: #c8c8c8;    display: inline;
+}
+label input[type="radio"] ~ i.fa.fa-dot-circle-o{
+display: none;
+}
+label input[type="radio"]:checked ~ i.fa.fa-circle-o{
+display: none;
+}
+label input[type="radio"]:checked ~ i.fa.fa-dot-circle-o{
+color: #7AA3CC;    display: inline;
+}
+label:hover input[type="radio"] ~ i.fa {
+color: #7AA3CC;
+}
+
+
+div[data-toggle="buttons"] label {
+display: inline-block;
+padding: 10px 12px;
+margin-bottom: 0;
+font-size: 16px;
+font-weight: normal;
+line-height: 2em;
+text-align: left;
+white-space: nowrap;
+vertical-align: top;
+cursor: pointer;
+background-color: none;
+border: 0px solid
+#c8c8c8;
+border-radius: 1px;
+color: #c8c8c8;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+-o-user-select: none;
+user-select: none;
+}
+
+div[data-toggle="buttons"] label:hover {
+color: #7AA3CC;
+}
+
+div[data-toggle="buttons"] label:active, div[data-toggle="buttons"] label.active {
+-webkit-box-shadow: none;
+box-shadow: none;
+}
+
+
+</style>
+    <script type = "text/javascript">
+        $(document).on('click', '.browse', function(){
+var file = $(this).parent().parent().parent().find('.file');
+file.trigger('click');
+});
+$(document).on('change', '.file', function(){
+$(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
+});
+$(document).on('load', '.file', function(){
+$(this).parent().find('.form-control').val($(this).val());
+});
+    </script>
+</head>
+<body>
+<div class="container-fluid" style="width:43%;height:50%;align:center;margin-top:10px">
+                {% if error %}
+                                <div class="alert alert-danger alert-dismissible" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="padding-right:10px;margin-right:10px">
+                                              &times;
+                                        </button>
+                                        {{error}}
+                                </div>
+                {% endif %}
+        </div>
+
+<div class="container" id="uploadContainer" style="margin-top:10px;height:80%;" >
+    <div class="row">
+         <div class="col-md-3"></div>
+                <div class="col-md-6">
+                     <div class="panel panel-primary">
+                            <div class="panel-heading"><h4 style="text-align:center">Web Based OCR</h4></div>
+                                <div class="panel-body">
+                                    <form id="form1" action="/show" method=post enctype=multipart/form-data action={{url_for('show')}}>
+                                            <div class="form-group">
+                                                <input type="file" name="file" class="file" id="fileUpload"/>
+                                                <div class="input-group col-xs-12">
+                                                      <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
+                                                      <input type="text" class="form-control input-md"  placeholder="Upload Image">
+                                                      <span class="input-group-btn">
+                                                        <button class="browse btn btn-primary input-md" type="button"><i class="glyphicon glyphicon-search"></i> Browse</button>
+                                                      </span>
+                                                </div>
+                                                <div class="row" style="padding-top:10px">
+                                                        <div class="col-md-12">
+                                                              <div class="btn-group" id="" data-toggle="buttons">
+                                                                <label class="btn active">
+                                                                  <input type="radio" name='Text_Val' value="Licence" checked><i class="fa fa-circle-o"></i><i class="fa fa-dot-circle-o"></i><span> Licence</span>
+                                                                </label>
+                                                                <label class="btn">
+                                                                  <input type="radio" name='Text_Val' value="SSN" ><i class="fa fa-circle-o"></i><i class="fa fa-dot-circle-o"></i><span> SSN</span>
+                                                                </label>
+                                                                  <!--<label class="btn">-->
+                                                                  <!--<input type="radio" name='Text_Val' value="Paystub" ><i class="fa fa-circle-o"></i><i class="fa fa-dot-circle-o"></i><span> Paystub</span>-->
+                                                                <!--</label>-->
+                                                              </div>
+                                                        </div>
+                                                    </div>
+                                                   <br/>
+                                                <div style="text-align:center ;margin-top:25px">
+                                                      <span class="input-group-btn">
+                                                          <button type="submit" class="btn btn-success input-md" name="Process" id="btnProcess"><i class="glyphicon glyphicon-indent-left"></i>Process</button>
+                                                      </span>
+
+                                                </div>
+                                            </div>
+                                     </form>
+                                <div>
+                             </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+</body>
