@@ -10,7 +10,7 @@ def mean_using_mb(image):
 def process_image(image, val):
     img = cv2.GaussianBlur(image.copy(), (3, 3),0)
     dst = cv2.fastNlMeansDenoising(img.copy(), None, val, 7, 21)
-    kernel = np.ones((1, 2), np.float32)
+    kernel = np.ones((3, 2), np.int32)
     erode = cv2.erode(dst, kernel, iterations=0)
     # img2pil = Image.fromarray(erode)
     # enhancer = ImageEnhance.Sharpness(img2pil)
@@ -19,15 +19,21 @@ def process_image(image, val):
     return erode
 def image_conversion_smooth(path):
     img = cv2.imread(path)
+    pImg=''
     # height, width = img.shape
     head, tail = os.path.split(path)
-    # mean = mean_using_mb(img)
-    pImg = process_image(img, 10)
-    for i in list(range(5)):  # to Iterate again
-        mean = mean_using_mb(pImg)
-        if (mean > 65.0):
-            pImg = process_image(pImg, 20)
-        else:
-            break
+    mean = mean_using_mb(img)
+    print(mean)
+    if mean < 20:
+        pImg=process_image(img,5)
+    elif 20 < mean <= 45:
+        pImg = process_image(img, 14)
+    elif 20< mean <=64:
+        pImg = process_image(img, 10)
+
+    elif (mean > 65.0):
+        pImg = process_image(img, 25)
+    else:
+        pass
     cv2.imwrite("static\\" + tail, pImg)
     return "static\\" + tail

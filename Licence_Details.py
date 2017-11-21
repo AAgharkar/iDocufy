@@ -82,7 +82,7 @@ def getUniqueItems(iterable):
 def get_id(text):
     try:
         get_licence_id = re.findall(
-            r'\w*[A-Za-z]\d{4}\s\d{10}|\d{12}|\w*[A-Za-z]?\d{8,9}|\w{1}\d{4}\s\d{5}\s\d{4,5}|\d{2,3}\s\d{3}\s\d{3}', text)
+            r'\w*[A-Za-z]\d{4}\s\d{10}|\d{12}|[A-Za-z]?\d{8,9}|\w{1}\d{4}\s\d{5}\s\d{4,5}|\d{2,3}\s\d{3}\s\d{3}', text)
         return get_licence_id[0]
     except Exception as E:
         print(E)
@@ -94,18 +94,18 @@ def get_date(text):
         date_val, date, actual_date = [], [], []
         val = re.findall(
             r'(\w*[A-Za-z]\d{1}\d{2}[./-](19|20|21|22|23|24)\d\d)|(\w*[A-Za-z]\d{1}[./-]\d{2}[./-](19|20|21|22|23|24)\d\d)'
-            r'|(\d{2}\s?[./-]\d{2}[./-](19|20|21|22|23|24)\d\d)'
-            r'|(\d{2}\s\d{2}\s(19|20|21|22|23|24)\d\d)|(\d{2}[./-]\d{2}(19|20|21|22|23|24)\d\d)'
-            r'|(\d{1,2}\s?[./-]\d{2}[./-]\s?\d{2}\s?\d{2})|(\d{2}\d{2}[./-](19|20|21|22|23|24)\d\d)'
-            r'|(\d{2}[./-]\d{2}\s[./-](19|20|21|22|23|24)\d\d)|(([0-9]|0[0-9]|1[0-9])[./-]([0-9][0-9]|[0-9])[./-]\d\d)'
-            r'|(([0-9]|0[0-9]|1[0-9])[./-]([0-9][0-9]|[0-9])[./-](19|20|21|22|23|24)\d\d)\b', text)
+            r'|(\d{2}\s?[./-]\d{2}[./-](19|20|21|22|23|24)\d\d)|(\d{2}\s\d{2}\s(19|20|21|22|23|24)\d\d)'
+            r'|(\d{2}[./-]\d{2}\s?(19|20|21|22|23|24)\d\d)|(\d{1,2}\s?[./-]\d{2}[./-]\s?\d{2}\s?\d{2})'
+            r'|(\d{2}\d{2}[./-](19|20|21|22|23|24)\d\d)|(\d{2}[./-]\d{2}\s[./-](19|20|21|22|23|24)\d\d)'
+            r'|(([0-9]|0[0-9]|1[0-9])[./-]([0-9][0-9]|[0-9])[./-]\d\d)|(([0-9]'
+            r'|0[0-9]|1[0-9])[./-]([0-9][0-9]|[0-9])[./-](19|20|21|22|23|24)\d\d)\b', text)
         #print(val)
         date_val1 = []
         for item in val:
             date_val1.append(" ".join(item))
         #print("Date", date_val1)
         string_date = " ".join(map(str, date_val1))
-        date_val = re.findall(r'\d{2}[./-]\d{2}[./-]\d{2,4}', string_date)
+        date_val = re.findall(r'\d{2}\s?[./-]?\d{2}\s?[./-]?\d{2,4}', string_date)
         #print("Date1", date_val)
         for dob in date_val:
             if 'o' in dob:
@@ -185,17 +185,16 @@ def get_address(value):
         text = ''.join(map(str, value))
         print(text)
         all_number = re.findall(
-            r"\s\d{3}\w?\s\w*\,?|\s\d{3}\s\d{1}|\s\d{4}\s|\w*\s\d{5}\s\w*|\w*\s\d{5}-\d{4}|\w*\s\d{5}"
+            r"\s?\d{3}\w?\s\w*\,?|\s\d{3}\s\d{1}|\s\d{4}\s|\w*\s\d{5}\s\w*|\w*\s\d{5}-\d{4}|\w*\s\d{5}"
             r"|\d{2}\s\w*|\w{2}\s\d{3}\s\d{2}|\w*\s\d{3}\s\d{1}\s\d{1}"
             r"|\w*\s\d{4}-\d{4}|\w*\s\d{2,5}\s\d{2,3}-\d{4}|\w*\s\d{2,5}\s\d{2,3}",
             text)
         number_val=' '.join(map(str, all_number))
         print("Number_Value",number_val)
         data = re.findall(
-            r"((?=AL|AK|AS|AZ|AR|CA|CO|CT|DE|DC|FM|FL|GA|GU|HI|ID|IL|IN|IA|KS|KY|LA|ME|MH|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|"
-            r"NC|ND|MP|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN|TX|UT|VT|VI|VA|WA|WV|WI|WY)[A-Z]{2}[, ])"
-            r"(\d{5}(?:-\d{4})|\d{4}(?:-\d{4})?|\d{3}(?:\s\d{2})|\d{3}(?:\s\d{1}\s\d{1})"
-            r"|\d{2,5}(?:\s\d{2,5})(?:-\d{4})?)",number_val)
+            r"\b((?=AL|AK|AS|AZ|AR|CA|CO|CT|DE|DC|FM|FL|GA|GU|HI|ID|IL|IN|IA|KS|KY|LA|ME|MH|MD|MA|MI"
+            r"|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|MP|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN"
+            r"|TX|UT|VT|VI|VA|WA|WV|WI|WY)[A-Z]{2}[, ])(\d{5}(?:-\d{4})?|\d{4}(?:-\d{4})?)",number_val)
         for item in data:
             zip_code.append("".join(item))
         print(zip_code)
@@ -214,18 +213,24 @@ def get_address(value):
         return full_address, street
 def get_name(value,street):
     try:
-        name = ' '.join(map(str, value.split(street, 1)[0].split()[-4:]))
+        name = ' '.join(map(str, value.split(street, 1)[0].split()[-5:]))
         print(name)
         name_regex=re.findall(r'[A-Za-z]\w*\b',name)
         print(name_regex)
         actual_name=" ".join(map(str,name_regex))
-        name_reg=re.findall(r'[A-Z]\w{2,}\s\w*[A-Za-z]\s?[A-Z]?',actual_name)
+        actual_name = actual_name.replace('Expires', "")
+        actual_name = actual_name.replace('Name', "")
+        actual_name = actual_name.replace('DENONE', "")
+        actual_name = actual_name.replace('NONE', "")
+        actual_name = actual_name.replace('Address', "")
+        actual_name = actual_name.replace('CLASS D', "")
+        actual_name = actual_name.replace('CLASSE', "")
+        actual_name = actual_name.replace('CLASS', "")
+        name_reg=re.findall(r'[A-Z]{2,}\s[A-Za-z]{2,}\s?[A-Z]?',actual_name)
         print(name_reg)
         full_name=" ".join(map(str,name_reg))
-        full_name = full_name.replace('Expires', "")
-        full_name = full_name.replace('Name', "")
-        full_name = full_name.replace('Address', "")
-        full_name = full_name.replace('CLASS D', "")
+
+
         return full_name
     except Exception as e:
         full_name=None

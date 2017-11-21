@@ -19,6 +19,7 @@ def get_doc(path):
     text = Img_to_Text.detect_document(path)
     output_doc.put(text)
 def get_details(text):
+    print(text)
     licence_id, max_date, min_date, iss_date, address,name = Licence_Details.get_licence_details1(text)
     details.put((licence_id, max_date, min_date, iss_date, address,name))
 
