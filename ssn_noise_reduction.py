@@ -19,7 +19,7 @@ def process_image(image, val):
 def image_conversion_smooth(path):
     img = cv2.imread(path)
     head, tail = os.path.split(path)
-    pImg = process_image(img, 10)
+    pImg = process_image(img, 13)
     for i in list(range(5)):  # to Iterate again
         mean = mean_using_mb(pImg)
         if (mean > 65.0):

@@ -82,8 +82,14 @@ def getUniqueItems(iterable):
 def get_id(text):
     try:
         get_licence_id = re.findall(
-            r'\w*[A-Za-z]\d{4}\s\d{10}|\d{12}|[A-Za-z]?\d{8,9}|\w{1}\d{4}\s\d{5}\s\d{4,5}|\d{2,3}\s\d{3}\s\d{3}', text)
-        return get_licence_id[0]
+            r'\w*[A-Za-z]\d{4}\s\d{10}|\d{12}|[A-Za-z]?\d{8,9}|\w{1}\d{4}\s\d{5}\s\d{4,5}|\d{2,3}\s\d{3}\s\d{3}\s?\d?\d?\d?', text)
+        print(get_licence_id)
+        if re.match(r'\d{3}\s\d{3}\s\d{3}',get_licence_id[0]):
+            get_licence_id=re.findall(r'\d{3}\s\d{3}\s\d{3}',get_licence_id[0])
+        if re.match(r'[A-Za-z]{1}',get_licence_id[0]):
+            return get_licence_id[0].upper()
+        else:
+            return get_licence_id[0]
     except Exception as E:
         print(E)
         error = "Unable to detect licence id"

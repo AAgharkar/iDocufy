@@ -24,15 +24,16 @@ def image_conversion_smooth(path):
     head, tail = os.path.split(path)
     mean = mean_using_mb(img)
     print(mean)
-    if mean < 20:
+    if mean < 26 and mean==45.5497231672:
         pImg=process_image(img,5)
     elif 20 < mean <= 45:
-        pImg = process_image(img, 14)
+        pImg = process_image(img, 12)
     elif 20< mean <=64:
         pImg = process_image(img, 10)
-
-    elif (mean > 65.0):
+    elif mean <=80.0:
         pImg = process_image(img, 25)
+    elif mean >=81.0:
+        pImg = process_image(img, 5)
     else:
         pass
     cv2.imwrite("static\\" + tail, pImg)
