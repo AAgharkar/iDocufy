@@ -92,4 +92,4 @@ if __name__ == "__main__":
 
     sess.init_app(app)
     # app.run(host='localhost', port=5004, debug=True, threaded=True)
-    app.run(host='192.168.0.224', port=5004, debug=True,threaded=True)
+    app.run(host='192.168.9.120', port=5004, debug=True,threaded=True)

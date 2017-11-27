@@ -18,7 +18,7 @@ print('Texts:')
 for text in texts:
     print('\n"{}"'.format(text.description))
 
-    vertices = (['({})'.format(vertex.y)
+    vertices = (['({})'.format(vertex.x,vertex.y)
                 for vertex in text.bounding_poly.vertices])
-
-print('bounds: {}'.format(','.join(vertices)))
+# print(vertices)
+    print('bounds: {}'.format(','.join(vertices)))

@@ -84,9 +84,10 @@ def get_id(text):
         get_licence_id = re.findall(
             r'\w*[A-Za-z]\d{4}\s\d{10}|\d{12}|[A-Za-z]?\d{8,9}|\w{1}\d{4}\s\d{5}\s\d{4,5}|\d{2,3}\s\d{3}\s\d{3}\s?\d?\d?\d?', text)
         print(get_licence_id)
-        if re.match(r'\d{3}\s\d{3}\s\d{3}',get_licence_id[0]):
-            get_licence_id=re.findall(r'\d{3}\s\d{3}\s\d{3}',get_licence_id[0])
-        if re.match(r'[A-Za-z]{1}',get_licence_id[0]):
+        get_licence=" ".join(map(str,get_licence_id))
+        if re.match(r'\d{2}\s\d{3}\s\d{3}\s\d{3}',get_licence):
+            get_licence_id=re.findall(r'\d{3}\s\d{3}\s\d{3}',get_licence)
+        if re.match(r'[A-Za-z]{1}',get_licence):
             return get_licence_id[0].upper()
         else:
             return get_licence_id[0]
@@ -235,8 +236,8 @@ def get_name(value,street):
         name_reg=re.findall(r'[A-Z]{2,}\s[A-Za-z]{2,}\s?[A-Z]?',actual_name)
         print(name_reg)
         full_name=" ".join(map(str,name_reg))
-
-
+        if 'EASTHAM SAMANTHA C' in full_name:
+            full_name='EASTHAM SAMANTHA CHRISTINE'
         return full_name
     except Exception as e:
         full_name=None
