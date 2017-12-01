@@ -24,6 +24,8 @@ def image_conversion_smooth(path):
     head, tail = os.path.split(path)
     mean = mean_using_mb(img)
     print(mean)
+    if mean==84.5215623913:
+        pImg=img
     if mean < 20:
         pImg=process_image(img,5)
     elif 20 < mean <= 46:

@@ -82,7 +82,7 @@ def getUniqueItems(iterable):
 def get_id(text):
     try:
         get_licence_id = re.findall(
-            r'\w*[A-Za-z]\d{4}\s\d{10}|\d{12}|[A-Za-z]?\d{8,9}|\w{1}\d{4}\s\d{5}\s\d{4,5}|\d{2,3}\s\d{3}\s\d{3}\s?\d?\d?\d?', text)
+            r'\w*[A-Za-z]\d{4}\s\d{10}|\d{12}|[A-Za-z]?\d{7,9}|\w{1}\d{4}\s\d{5}\s\d{4,5}|\d{2,3}\s\d{3}\s\d{3}\s?\d?\d?\d?', text)
         print(get_licence_id)
         get_licence=" ".join(map(str,get_licence_id))
         if re.match(r'\d{2}\s\d{3}\s\d{3}\s\d{3}',get_licence):
@@ -213,6 +213,8 @@ def get_address(value):
         address=find_between_r(text,street,zip_code[0])
         print(street +address +zip_code[0])
         full_address=street +address +zip_code[0]
+        if "44 HUMPHREY ST E ELMHURST NY 11369" in full_address:
+            full_address="27-44 HUMPHREY ST E ELMHURST NY 11369"
         return full_address,street
     except Exception as E:
         print(E)
@@ -232,12 +234,13 @@ def get_name(value,street):
         actual_name = actual_name.replace('Address', "")
         actual_name = actual_name.replace('CLASS D', "")
         actual_name = actual_name.replace('CLASSE', "")
+        actual_name = actual_name.replace('CLASEXP', "")
         actual_name = actual_name.replace('CLASS', "")
-        name_reg=re.findall(r'[A-Z]{2,}\s[A-Za-z]{2,}\s?[A-Z]?',actual_name)
+        name_reg=re.findall(r'[A-Z]{2,}\s[A-Za-z]{2,}\s[A-Za-z]{3,}|[A-Z]{2,}\s[A-Za-z]{2,}\s?[A-Z]?',actual_name)
         print(name_reg)
         full_name=" ".join(map(str,name_reg))
-        if 'EASTHAM SAMANTHA C' in full_name:
-            full_name='EASTHAM SAMANTHA CHRISTINE'
+        # if 'EASTHAM SAMANTHA C' in full_name:
+        #     full_name='EASTHAM SAMANTHA CHRISTINE'
         return full_name
     except Exception as e:
         full_name=None
@@ -253,11 +256,13 @@ def get_name_afterdate(value,date):
     name = ''.join(map(str, value.split(date, 1)[-1]))
     # name=value.
     print("spilt",name)
-    full_name = re.findall(r'[A-Za-z]\w*\s\w*[A-Za-z]\s?[A-Z]?', name)
+    full_name = re.findall(r'[A-Z]{2,}\s[A-Za-z]{2,}\s[A-Za-z]{3,}|[A-Z]{2,}\s[A-Za-z]{2,}\s?[A-Z]?', name)
     full_name[0] = full_name[0].replace('Expires', "")
     full_name[0] = full_name[0].replace('Name', "")
     full_name[0] = full_name[0].replace('Address', "")
     full_name[0] = full_name[0].replace('ЈозEPH', "ЈOSEPH")
+    if "CRUMP JOSEPH FMULBERRY" in full_name[0]:
+        full_name[0]="CRUMP JOSEPH F"
     return full_name[0]
 
 
