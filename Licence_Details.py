@@ -55,15 +55,20 @@ import datetime
 #         error = "Details not Detected properly"
 #         return render_template('Index.html', error=error)
 def get_licence_details1(text):
-    get_licence_id=get_id(text)
-    max_date, min_date, iss_date=get_date(text)
-    address,street=get_address(text)
-    if street==None:
-       name=get_name_afterdate(text,max_date)
-    else:
-        name=get_name(text,street)
-    # address=None
-    return get_licence_id,max_date,min_date,iss_date,address,name
+    try:
+        get_licence_id=get_id(text)
+        max_date, min_date, iss_date=get_date(text)
+        address,street=get_address(text)
+        if street==None:
+           name=get_name_afterdate(text,max_date)
+        else:
+            name=get_name(text,street)
+        # address=None
+        return get_licence_id,max_date,min_date,iss_date,address,name
+    except Exception as e:
+        get_licence_id, max_date, min_date, iss_date, address, name='null','null','null','null','null','null'
+        return get_licence_id,max_date,min_date,iss_date,address,name
+
 def find_between_r(s, first, last):
     try:
         start = s.index(first) + len(first)
@@ -236,6 +241,8 @@ def get_name(value,street):
         actual_name = actual_name.replace('CLASSE', "")
         actual_name = actual_name.replace('CLASEXP', "")
         actual_name = actual_name.replace('CLASS', "")
+        actual_name = actual_name.replace('ISS', "")
+        actual_name = actual_name.replace('SExr', "")
         name_reg=re.findall(r'[A-Z]{2,}\s[A-Za-z]{2,}\s[A-Za-z]{3,}|[A-Z]{2,}\s[A-Za-z]{2,}\s?[A-Z]?',actual_name)
         print(name_reg)
         full_name=" ".join(map(str,name_reg))

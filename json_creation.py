@@ -17,13 +17,15 @@ texts = response.text_annotations
 
 
 result=[]
-for text in texts:
-    print('\n"{}"'.format(text.description))
+for text in texts[1:]:
+    # print('\n"{}"'.format(text.description))
 
-    vertices = (['(X={},y={})'.format(vertex.x,vertex.y)
-                for vertex in text.bounding_poly.vertices])
+    vertices = ['X={},y={}'.format(vertex.x,vertex.y)
+                for vertex in text.bounding_poly.vertices]
 
-    print('bounds: {}'.format(','.join(vertices)))
+    data=({text.description:vertices})
+
+    # print('bounds: {}'.format(','.join(vertices)))
 #     response1={
 #         "description":text.description,
 #         "vertices":['x:{},y:{}'.format(vertex.x,vertex.y)
@@ -40,4 +42,5 @@ for text in texts:
 #     print(items['description'])
 #     print(items['vertices'])
 # print(img[2]['description'])
+
 

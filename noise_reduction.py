@@ -12,10 +12,6 @@ def process_image(image, val):
     dst = cv2.fastNlMeansDenoising(img.copy(), None, val, 7, 21)
     kernel = np.ones((3, 2), np.int32)
     erode = cv2.erode(dst, kernel, iterations=0)
-    # img2pil = Image.fromarray(erode)
-    # enhancer = ImageEnhance.Sharpness(img2pil)
-    # sharp = enhancer.enhance(4.5)
-    # img2cv = np.asarray(sharp)
     return erode
 def image_conversion_smooth(path):
     img = cv2.imread(path)
