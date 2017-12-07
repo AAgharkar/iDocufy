@@ -9,7 +9,6 @@ from urllib.request import urlopen
 import Img_to_Text
 import Licence_Details
 import SSN_Details
-import crop_img
 import noise_reduction
 import ssn_noise_reduction
 
@@ -71,6 +70,7 @@ def index():
             thread = threading.Thread(target=get_doc, args=(image_path,json_val[doc_id],))
             thread.start()
             (text,licence_id, exp_date, dob, iss_date, address, name) = output_doc.get()
+            print("name",name)
             # thread = threading.Thread(target=get_details, args=(text,))
             # thread.start()
             # (licence_id, exp_date, dob, iss_date, address, name) = details.get()
@@ -84,12 +84,13 @@ def index():
                     name_value[2] = 'null'
                 else:
                     name_value=name.split()
+                    print("name_value",name_value)
                 if len(name_value)>2:
                     add = {'first_name': name_value[1], 'dob': dob, 'issue_date': iss_date, 'expiration_date': exp_date, 'last_name': name_value[0], 'address': address, 'license_id': licence_id,"middle_name":name_value[2]}
                 else:
                     add = {'first_name': name_value[0], 'dob': dob, 'issue_date': iss_date,
                            'expiration_date': exp_date, 'last_name': name_value[1], 'address': address,
-                           'license_id': licence_id}
+                           'license_id': licence_id,"middle_name":'null'}
                 actual_value = list(add.keys())
                 for i in range(len(data_value)):
                     if actual_value[i].lower() in map(str.lower, data_value):

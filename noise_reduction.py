@@ -23,10 +23,10 @@ def image_conversion_smooth(path):
     if mean==84.5215623913:
         pImg=img
     if mean < 20:
-        pImg=process_image(img,5)
+        pImg=process_image(img,10)
     elif 20 < mean <= 46:
         pImg = process_image(img, 12)
-    elif 20< mean <=64:
+    elif 47< mean <=64:
         pImg = process_image(img, 10)
     elif mean <=86.0:
         pImg = process_image(img, 25)
