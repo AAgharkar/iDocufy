@@ -72,7 +72,8 @@ def index():
             thread.start()
             (licence_id, exp_date, dob, iss_date, address, name) = details.get()
             if licence_id =='null' and exp_date =='null' and dob =='null' and iss_date =='null' and address =='null' and name=='null':
-                response={'message':"Invalid image"}
+
+                response = {'error_msg': "Invalid image"}
             else:
                 if name=='null':
                     name_value=[]
@@ -92,8 +93,10 @@ def index():
                 for i in range(len(data_value)):
                     if actual_value[i].lower() in map(str.lower, data_value):
                         response=add
+
                     else:
                         del add[actual_value[i]]
+                response['error_msg']="null"
                 # for i in range(len(data_value)):
                 #     if actual_value[i].lower() in map(str.lower, data_value):
                 #         response=actual_value
@@ -107,8 +110,10 @@ def index():
             thread = threading.Thread(target=get_ssn_details, args=(text,))
             thread.start()
             (SSN_Number, name)=details.get()
+            print("in main",SSN_Number)
+            print("in main", name)
             if SSN_Number =='null' and name =='null':
-                response={'message':"Invalid image"}
+                response={'error_msg':"Invalid image"}
             else:
                 if name=='null':
                     name_value.append('null')
@@ -118,17 +123,20 @@ def index():
                     name_value = name.split()
                     print(name_value)
                 if len(name_value) > 2:
-                    add = {"SSN Number":SSN_Number,"first name":name_value[1],"last name":name_value[0],"middle name":name_value[2]}
+                    add = {"SSN Number":SSN_Number,"first name":name_value[0],"last name":name_value[2],"middle name":name_value[1]}
                 else:
                     add = {"SSN Number": SSN_Number, "first name": name_value[0], "last name": name_value[1]
                            }
                 actual_value = list(add.keys())
                 print(data_value)
-                for i in range(len(data_value)):
+                for i in range(len(actual_value)):
                     if actual_value[i].lower() in map(str.lower, data_value):
                         response=add
+                        print("rrr",response)
                     else:
                         del add[actual_value[i]]
+                        response=add
+                response['error_msg']='null'
         # d={'raw_data':text}
         print(response)
         response['raw_data']=text

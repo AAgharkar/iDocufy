@@ -4,8 +4,9 @@ from flask import render_template
 
 def get_SSN_details1(text):
     try:
+        print(text)
         data=re.findall(r'\b(((?!000|666)(?:[0-6]\d{2}|7[0-2][0-9]|73[0-3]|7[5-6][0-9]|77[0-2]))[-.]+?((?!00)\d{2})[-.]+?(((?!0000)\d{4})))',text)
-        print(data)
+        print("ssn_number",data)
         if data==[]:
             ssn_number="null"
             actual_name="null"

@@ -5,7 +5,7 @@ from flask import Flask, request, render_template,flash
 import werkzeug
 from flask_session import Session
 from multiprocessing import Queue
-import Img_to_Text,crop_img,Licence_Details,ssn_noise_reduction,SSN_Details,Paystub,noise_reduction
+import Img_to_Text,crop_img,Licence_Details,trail_ssn,SSN_Details,Paystub,noise_reduction
 
 UPLOAD_FOLDER = 'Upload_Image\\'
 ALLOWED_EXTENSIONS = set(['jpg','jpeg','JPG','PNG','PDF','JPEG','bmp','BMP'])
@@ -56,7 +56,7 @@ def show():
                     thread.start()
                     (licence_id, max_date, min_date, iss_date, address,name)=details.get()
                 elif options == 'SSN':
-                    image_path = ssn_noise_reduction.image_conversion_smooth(image)
+                    image_path = trail_ssn.image_conversion_smooth(image)
                     head, tail = os.path.split(image_path)
                     thread = threading.Thread(target=get_doc, args=(image_path,))
                     thread.start()
