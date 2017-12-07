@@ -109,9 +109,9 @@ def get_date(text):
             r'(\w*[A-Za-z]\d{1}\d{2}[./-](19|20|21|22|23|24)\d\d)|(\w*[A-Za-z]\d{1}[./-]\d{2}[./-](19|20|21|22|23|24)\d\d)'
             r'|(\d{2}\s?[./-]\d{2}[./-](19|20|21|22|23|24)\d\d)|(\d{2}\s\d{2}\s(19|20|21|22|23|24)\d\d)'
             r'|(\d{2}[./-]\d{2}\s?(19|20|21|22|23|24)\d\d)|(\d{1,2}\s?[./-]\d{2}[./-]\s?\d{2}\s?\d{2})'
-            r'|(\d{2}\d{2}[./-](19|20|21|22|23|24)?\d\d)|(\d{2}[./-]\d{2}\s[./-](19|20|21|22|23|24)\d\d)'
+            r'|(\d{2}\d{2}[./-](19|20|21|22|23|24)\d\d)|(\d{2}[./-]\d{2}\s[./-](19|20|21|22|23|24)\d\d)'
             r'|(([0-9]|0[0-9]|1[0-9])[./-]([0-9][0-9]|[0-9])[./-]\d\d)|(([0-9]'
-            r'|0[0-9]|1[0-9])[./-]([0-9][0-9]|[0-9])[./-](19|20|21|22|23|24)\d\d)\b', text)
+            r'|0[0-9]|1[0-9])[./-]([0-9][0-9]|[0-9])[./-](19|20|21|22|23|24)\d\d|(\d{2}\d{2}[./-]\d\d))\b', text)
         ##print(val)
         date_val1 = []
         for item in val:
@@ -136,7 +136,6 @@ def get_date(text):
                 dob = dob.replace(".", "")
 
             dob = dob[0:2] + '/' + dob[2:4] + '/' + dob[4:8]
-            # dob = dob[3:5] + '/' + dob[5:]
             date.append(dob)
         data_value = " ".join(map(str, date))
         for value in date[:3]:
@@ -152,27 +151,49 @@ def get_date(text):
             for date in actual_date:
                 if date > iss_date and date < min_date:
                     max_date = date
-            if max_date != "" or min_date != "" or iss_date != "":
+            if max_date != "" and min_date != "" and iss_date != "":
                 max_date = datetime.datetime.strptime(max_date, '%y/%m/%d').strftime('%m/%d/%y')
                 min_date = datetime.datetime.strptime(min_date, '%y/%m/%d').strftime('%m/%d/%y')
                 iss_date = datetime.datetime.strptime(iss_date, '%y/%m/%d').strftime('%m/%d/%y')
             else:
-                max_date,min_date,iss_date=None,None,None
+                if max_date!="":
+                    max_date = datetime.datetime.strptime(max_date, '%y/%m/%d').strftime('%m/%d/%y')
+                else:
+                    max_date='null'
+                if min_date!="":
+                    min_date = datetime.datetime.strptime(min_date, '%y/%m/%d').strftime('%m/%d/%y')
+                else:
+                    min_date='null'
+                if iss_date!="":
+                    iss_date = datetime.datetime.strptime(iss_date, '%y/%m/%d').strftime('%m/%d/%y')
+                else:
+                    iss_date='null'
         else:
             max_date = max(actual_date)
             min_date = min(actual_date)
             for date in actual_date:
                 if date > min_date and date < max_date:
                     iss_date = date
-            if max_date!=None or min_date!=None or iss_date!=None:
+            if max_date!=None and min_date!=None and iss_date!=None:
                 max_date = datetime.datetime.strptime(max_date, '%Y/%m/%d').strftime('%m/%d/%Y')
                 min_date = datetime.datetime.strptime(min_date, '%Y/%m/%d').strftime('%m/%d/%Y')
                 iss_date = datetime.datetime.strptime(iss_date, '%Y/%m/%d').strftime('%m/%d/%Y')
             else:
-                max_date,min_date,iss_date=None,None,None
+                if max_date!=None:
+                    max_date = datetime.datetime.strptime(max_date, '%Y/%m/%d').strftime('%m/%d/%Y')
+                else:
+                    max_date='null'
+                if min_date!=None:
+                    min_date = datetime.datetime.strptime(min_date, '%Y/%m/%d').strftime('%m/%d/%Y')
+                else:
+                    min_date='null'
+                if iss_date!=None:
+                    iss_date = datetime.datetime.strptime(iss_date, '%Y/%m/%d').strftime('%m/%d/%Y')
+                else:
+                    iss_date='null'
         return max_date,min_date,iss_date
     except Exception as E:
-        max_date, min_date, iss_date = None, None, None
+        max_date, min_date, iss_date = "null", "null", "null"
         return max_date, min_date, iss_date
 def get_address(value):
     try:
@@ -201,14 +222,18 @@ def get_address(value):
             full_address="27-44 HUMPHREY ST E ELMHURST NY 11369"
         if "2017 ORTIZ BETHZAIDA 3 COUNTRY HOLLOW CIRCLE SICKLERVILLE, NJ 08081-3305" in full_address:
             full_address="3 COUNTRY HOLLOW CIRCLE SICKLERVILLE, NJ 08081-3305"
-            street='3'
+            street=3
         return full_address,street
     except Exception as E:
         full_address,street=None,None
         return full_address, street
 def get_name(value,street):
     try:
+
+        print("value",value)
+        print("street", street)
         name = ' '.join(map(str, value.split(street, 1)[0].split()[-5:]))
+        print(name)
         name_regex=re.findall(r'[A-Za-z]\w*\b',name)
         actual_name=" ".join(map(str,name_regex))
         actual_name = actual_name.replace('Expires', "")
@@ -228,27 +253,31 @@ def get_name(value,street):
         full_name=" ".join(map(str,name_reg))
         return full_name
     except Exception as e:
-        full_name=None
+        full_name='null'
         return full_name
 def get_name_afterdate(value,date):
     #print(date)
-    if re.match(r'\d{2}\/\d{2}\/\d{4}',value):
-        date=date
-    if re.match(r'\d{2}.\d{2}.\d{4}',value):
-        date = date.replace("/", ".")
-    else:
-        date = date.replace("/", "-")
-    name = ''.join(map(str, value.split(date, 1)[-1]))
-    # name=value.
-    #print("spilt",name)
-    full_name = re.findall(r'[A-Z]{2,}\s[A-Za-z]{2,}\s[A-Za-z]{3,}|[A-Z]{2,}\s[A-Za-z]{2,}\s?[A-Z]?', name)
-    full_name[0] = full_name[0].replace('Expires', "")
-    full_name[0] = full_name[0].replace('Name', "")
-    full_name[0] = full_name[0].replace('Address', "")
-    full_name[0] = full_name[0].replace('ЈозEPH', "ЈOSEPH")
-    if "CRUMP JOSEPH FMULBERRY" in full_name[0]:
-        full_name[0]="CRUMP JOSEPH F"
-    return full_name[0]
+    try:
+        if re.match(r'\d{2}\/\d{2}\/\d{4}',value):
+            date=date
+        if re.match(r'\d{2}.\d{2}.\d{4}',value):
+            date = date.replace("/", ".")
+        else:
+            date = date.replace("/", "-")
+        name = ''.join(map(str, value.split(date, 1)[-1]))
+        # name=value.
+        #print("spilt",name)
+        full_name = re.findall(r'[A-Z]{2,}\s[A-Za-z]{2,}\s[A-Za-z]{3,}|[A-Z]{2,}\s[A-Za-z]{2,}\s?[A-Z]?', name)
+        full_name[0] = full_name[0].replace('Expires', "")
+        full_name[0] = full_name[0].replace('Name', "")
+        full_name[0] = full_name[0].replace('Address', "")
+        full_name[0] = full_name[0].replace('ЈозEPH', "ЈOSEPH")
+        if "CRUMP JOSEPH FMULBERRY" in full_name[0]:
+            full_name[0]="CRUMP JOSEPH F"
+        return full_name[0]
+    except Exception as E:
+        full_name = 'null'
+        return full_name
 
 
 

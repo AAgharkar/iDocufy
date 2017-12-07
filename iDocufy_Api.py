@@ -63,6 +63,7 @@ def index():
         val = json_field_val.get('fields')
         field_val=dict([(val[i]['id'],val[i]['name']) for i in range(len(content['fields']))])
         data_value = list(field_val.values())
+        # data_value=sorted(data_value)
         if 'License' in json_val[doc_id]:
             print("hello")
             image_path = noise_reduction.image_conversion_smooth("Upload_Image/"+filename)
@@ -79,9 +80,9 @@ def index():
             else:
                 if name=='null':
                     name_value=[]
-                    name_value[0]='null'
-                    name_value[1] = 'null'
-                    name_value[2] = 'null'
+                    name_value.append('null')
+                    name_value.append('null')
+                    name_value.append('null')
                 else:
                     name_value=name.split()
                     print("name_value",name_value)
@@ -92,12 +93,18 @@ def index():
                            'expiration_date': exp_date, 'last_name': name_value[1], 'address': address,
                            'license_id': licence_id,"middle_name":'null'}
                 actual_value = list(add.keys())
-                for i in range(len(data_value)):
-                    if actual_value[i].lower() in map(str.lower, data_value):
-                            content['fields'][data_value.index(actual_value[i])-1]['field_value_original'] = add[actual_value[i]]
-                            response=content
-                    else:
-                        del add[actual_value[i]]
+                actual_value=sorted(actual_value)
+                print("actual",actual_value)
+                print("data",data_value)
+                for i in range(len(content['fields'])):
+                    print("content",content['fields'][i])
+                    for j in range(len(actual_value)):
+                        print("j value",actual_value[j])
+                        if content['fields'][i]['name']==actual_value[j]:
+                            content['fields'][i]['field_value_original']=add[actual_value[j]]
+                            print(content['fields'][i])
+                            pass
+
         elif 'SSN' in json_val[doc_id]:
             image_path = ssn_noise_reduction.image_conversion_smooth("Upload_Image/"+filename)
             thread = threading.Thread(target=get_doc, args=(image_path,json_val[doc_id],))
@@ -125,13 +132,12 @@ def index():
                            }
                 actual_value = list(add.keys())
                 print(data_value)
-                for i in range(len(actual_value)):
-                    if actual_value[i].lower() in map(str.lower, data_value):
-                        content['fields'][data_value.index(actual_value[i]) - 1]['field_value_original'] = add[actual_value[i]]
-                        response = content
-                    else:
-                        del add[actual_value[i]]
-                        response=add
+                for i in range(len(content['fields'])):
+                    for j in range(len(actual_value)):
+                        if content['fields'][i]['name']==actual_value[j]:
+                            content['fields'][i]['field_value_original']=add[actual_value[j]]
+                            pass
+        response = content
         response['error_msg']='null'
         print(response)
         response['raw_data']=text
