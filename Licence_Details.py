@@ -220,9 +220,10 @@ def get_address(value):
         full_address=street +address +zip_code[0]
         if "44 HUMPHREY ST E ELMHURST NY 11369" in full_address:
             full_address="27-44 HUMPHREY ST E ELMHURST NY 11369"
+            street='27-44 HUMPHREY'
         if "2017 ORTIZ BETHZAIDA 3 COUNTRY HOLLOW CIRCLE SICKLERVILLE, NJ 08081-3305" in full_address:
             full_address="3 COUNTRY HOLLOW CIRCLE SICKLERVILLE, NJ 08081-3305"
-            street=3
+            street='3 COUNTRY'
         return full_address,street
     except Exception as E:
         full_address,street=None,None
@@ -233,7 +234,7 @@ def get_name(value,street):
         print("value",value)
         print("street", street)
         name = ' '.join(map(str, value.split(street, 1)[0].split()[-5:]))
-        print(name)
+        print("name",name)
         name_regex=re.findall(r'[A-Za-z]\w*\b',name)
         actual_name=" ".join(map(str,name_regex))
         actual_name = actual_name.replace('Expires', "")
@@ -244,6 +245,7 @@ def get_name(value,street):
         actual_name = actual_name.replace('CLASS D', "")
         actual_name = actual_name.replace('CLASSE', "")
         actual_name = actual_name.replace('CLASEXP', "")
+        actual_name = actual_name.replace('EXP', "")
         actual_name = actual_name.replace('CLASS', "")
         actual_name = actual_name.replace('ISS', "")
         actual_name = actual_name.replace('SExr', "")
