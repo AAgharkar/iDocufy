@@ -17,9 +17,15 @@ app = Flask(__name__,static_folder='static')
 output_doc = Queue()
 details = Queue()
 
-def get_doc(path):
+def get_doc(path,doc_type):
     text = Img_to_Text.detect_document(path)
-    output_doc.put(text)
+    if 'License' in doc_type:
+        licence_id, max_date, min_date, iss_date, address, name = Licence_Details.get_licence_details1(text)
+        output_doc.put((text,licence_id, max_date, min_date, iss_date, address, name))
+    elif 'SSN' in doc_type:
+        SSN_Number, name = SSN_Details.get_SSN_details1(text)
+        output_doc.put((text,SSN_Number, name))
+
 def get_details(text):
     print(text)
     licence_id, max_date, min_date, iss_date, address,name = Licence_Details.get_licence_details1(text)
@@ -36,7 +42,6 @@ def index():
         content = request.json
         print(content)
         doc_id = int(content['doc_id'])
-
         url = "http://192.168.9.81:5011" + content['file_path']
         print(url.replace(" ","%20"))
         url=url.replace(" ","%20")
@@ -55,24 +60,21 @@ def index():
             downloaded_image.write(buf)
             downloaded_image.close()
             image_on_web.close()
-        val = content['fields']
+        json_field_val = json.loads(json.dumps(content))
+        val = json_field_val.get('fields')
         field_val=dict([(val[i]['id'],val[i]['name']) for i in range(len(content['fields']))])
         data_value = list(field_val.values())
-        # field_val=dict([(val[i]['id'], val[i]['name']) for i in range(len(content['fields']))])
-        # print([val[i]['name'] for i in range(len(content['fields']))])
-        # print(content['fields'][0]['name'])
         if 'License' in json_val[doc_id]:
             print("hello")
             image_path = noise_reduction.image_conversion_smooth("Upload_Image/"+filename)
             print(image_path)
-            thread = threading.Thread(target=get_doc, args=(image_path,))
+            thread = threading.Thread(target=get_doc, args=(image_path,json_val[doc_id],))
             thread.start()
-            text = output_doc.get()
-            thread = threading.Thread(target=get_details, args=(text,))
-            thread.start()
-            (licence_id, exp_date, dob, iss_date, address, name) = details.get()
+            (text,licence_id, exp_date, dob, iss_date, address, name) = output_doc.get()
+            # thread = threading.Thread(target=get_details, args=(text,))
+            # thread.start()
+            # (licence_id, exp_date, dob, iss_date, address, name) = details.get()
             if licence_id =='null' and exp_date =='null' and dob =='null' and iss_date =='null' and address =='null' and name=='null':
-
                 response = {'error_msg': "Invalid image"}
             else:
                 if name=='null':
@@ -83,33 +85,26 @@ def index():
                 else:
                     name_value=name.split()
                 if len(name_value)>2:
-                    add = {'first name': name_value[1], 'dob': dob, 'issue date': iss_date,
-                           'expiration date': exp_date, 'last name': name_value[0], 'address': address, 'license id': licence_id,"middle name":name_value[2]}
+                    add = {'first_name': name_value[1], 'dob': dob, 'issue_date': iss_date, 'expiration_date': exp_date, 'last_name': name_value[0], 'address': address, 'license_id': licence_id,"middle_name":name_value[2]}
                 else:
-                    add = {'first name': name_value[0], 'dob': dob, 'issue date': iss_date,
-                           'expiration date': exp_date, 'last name': name_value[1], 'address': address,
-                           'license id': licence_id}
+                    add = {'first_name': name_value[0], 'dob': dob, 'issue_date': iss_date,
+                           'expiration_date': exp_date, 'last_name': name_value[1], 'address': address,
+                           'license_id': licence_id}
                 actual_value = list(add.keys())
                 for i in range(len(data_value)):
                     if actual_value[i].lower() in map(str.lower, data_value):
-                        response=add
-
+                            content['fields'][data_value.index(actual_value[i])-1]['field_value_original'] = add[actual_value[i]]
+                            response=content
                     else:
                         del add[actual_value[i]]
-                response['error_msg']="null"
-                # for i in range(len(data_value)):
-                #     if actual_value[i].lower() in map(str.lower, data_value):
-                #         response=actual_value
-                #     else:
-                #        response=actual_value.pop(actual_value.index(actual_value[i]))
         elif 'SSN' in json_val[doc_id]:
             image_path = ssn_noise_reduction.image_conversion_smooth("Upload_Image/"+filename)
-            thread = threading.Thread(target=get_doc, args=(image_path,))
+            thread = threading.Thread(target=get_doc, args=(image_path,json_val[doc_id],))
             thread.start()
-            text = output_doc.get()
-            thread = threading.Thread(target=get_ssn_details, args=(text,))
-            thread.start()
-            (SSN_Number, name)=details.get()
+            (text,SSN_Number, name) = output_doc.get()
+            # thread = threading.Thread(target=get_ssn_details, args=(text,))
+            # thread.start()
+            # (SSN_Number, name)=details.get()
             print("in main",SSN_Number)
             print("in main", name)
             if SSN_Number =='null' and name =='null':
@@ -123,21 +118,20 @@ def index():
                     name_value = name.split()
                     print(name_value)
                 if len(name_value) > 2:
-                    add = {"SSN Number":SSN_Number,"first name":name_value[0],"last name":name_value[2],"middle name":name_value[1]}
+                    add = {"ssn_number":SSN_Number,"first_name":name_value[0],"last_name":name_value[2],"middle_name":name_value[1]}
                 else:
-                    add = {"SSN Number": SSN_Number, "first name": name_value[0], "last name": name_value[1]
+                    add = {"ssn_number": SSN_Number, "first_name": name_value[0], "last_name": name_value[1]
                            }
                 actual_value = list(add.keys())
                 print(data_value)
                 for i in range(len(actual_value)):
                     if actual_value[i].lower() in map(str.lower, data_value):
-                        response=add
-                        print("rrr",response)
+                        content['fields'][data_value.index(actual_value[i]) - 1]['field_value_original'] = add[actual_value[i]]
+                        response = content
                     else:
                         del add[actual_value[i]]
                         response=add
-                response['error_msg']='null'
-        # d={'raw_data':text}
+        response['error_msg']='null'
         print(response)
         response['raw_data']=text
         print("all response",response)
