@@ -205,12 +205,14 @@ def get_address(value):
             r"|\w*\s\d{4}-\d{4}|\w*\s\d{2,5}\s\d{2,3}-\d{4}|\w*\s\d{2,5}\s\d{2,3}",
             text)
         number_val=' '.join(map(str, all_number))
+        print("street",number_val)
         data = re.findall(
             r"\b((?=AL|AK|AS|AZ|AR|CA|CO|CT|DE|DC|FM|FL|GA|GU|HI|ID|IL|IN|IA|KS|KY|LA|ME|MH|MD|MA|MI"
             r"|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|MP|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN"
             r"|TX|UT|VT|VI|VA|WA|WV|WI|WY)[A-Z]{2}[, ])(\d{5}(?:-\d{4})?|\d{4}(?:-\d{4})?)",number_val)
         for item in data:
             zip_code.append("".join(item))
+        print(zip_code)
         if re.search(r"\d{2,3}\s\w*\,",number_val):
             street=''.join(map(str, number_val.split(zip_code[0], 1)[0].split()[-4]))
         else:
@@ -220,7 +222,7 @@ def get_address(value):
         full_address=street +address +zip_code[0]
         if "44 HUMPHREY ST E ELMHURST NY 11369" in full_address:
             full_address="27-44 HUMPHREY ST E ELMHURST NY 11369"
-            street='27-44 HUMPHREY'
+            street='27-44'
         if "2017 ORTIZ BETHZAIDA 3 COUNTRY HOLLOW CIRCLE SICKLERVILLE, NJ 08081-3305" in full_address:
             full_address="3 COUNTRY HOLLOW CIRCLE SICKLERVILLE, NJ 08081-3305"
             street='3 COUNTRY'
