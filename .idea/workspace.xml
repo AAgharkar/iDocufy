@@ -4,7 +4,10 @@
     <list default="true" id="547c2528-6ab2-4be1-ac41-9a660fe0aec8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Licence_Details.py" afterPath="$PROJECT_DIR$/Licence_Details.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ssn_noise_reduction.py" afterPath="$PROJECT_DIR$/ssn_noise_reduction.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Paystub.py" afterPath="$PROJECT_DIR$/Paystub.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TextExtraction.py" afterPath="$PROJECT_DIR$/TextExtraction.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iDocufy_Api.py" afterPath="$PROJECT_DIR$/iDocufy_Api.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/json_creation.py" afterPath="$PROJECT_DIR$/json_creation.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,65 +24,13 @@
       <file leaf-file-name="iDocufy_Api.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/iDocufy_Api.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1560">
-              <caret line="124" column="31" lean-forward="false" selection-start-line="124" selection-start-column="31" selection-end-line="124" selection-end-column="31" />
+            <state relative-caret-position="-70">
+              <caret line="139" column="66" lean-forward="true" selection-start-line="139" selection-start-column="66" selection-end-line="139" selection-end-column="66" />
               <folding>
-                <element signature="e#380#784#0" expanded="false" />
-                <element signature="e#1501#1520#0" expanded="false" />
-                <element signature="e#1750#1847#0" expanded="false" />
+                <element signature="e#0#16#0" expanded="true" />
+                <element signature="e#2024#4205#0" expanded="false" />
+                <element signature="e#4258#5777#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ssn_noise_reduction.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ssn_noise_reduction.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="19" column="15" lean-forward="true" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
-              <folding>
-                <element signature="e#1#14#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="noise_reduction.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/noise_reduction.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="37" column="13" lean-forward="false" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Licence_Details.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Licence_Details.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="103" column="19" lean-forward="false" selection-start-line="103" selection-start-column="19" selection-end-line="103" selection-end-column="19" />
-              <folding>
-                <element signature="e#60#92#0" expanded="false" />
-                <element signature="e#3006#3637#0" expanded="false" />
-                <element signature="e#4049#4739#0" expanded="false" />
-                <element signature="e#4764#9392#0" expanded="false" />
-                <element signature="e#9421#11143#0" expanded="false" />
-                <element signature="e#10715#10794#0" expanded="false" />
-                <element signature="e#10910#11007#0" expanded="false" />
-                <element signature="e#11176#12481#0" expanded="false" />
-                <element signature="e#12522#13425#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SSN_Details.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SSN_Details.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-427">
-              <caret line="4" column="27" lean-forward="false" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -113,21 +64,22 @@
       <list>
         <option value="$PROJECT_DIR$/DEMO.py" />
         <option value="$PROJECT_DIR$/Image_Result.json" />
-        <option value="$PROJECT_DIR$/json_creation.py" />
         <option value="$PROJECT_DIR$/json_value.py" />
         <option value="$PROJECT_DIR$/trial.py" />
-        <option value="$PROJECT_DIR$/TextExtraction.py" />
         <option value="$PROJECT_DIR$/SSN_Details.py" />
         <option value="$PROJECT_DIR$/trail_ssn.py" />
         <option value="$PROJECT_DIR$/noise_reduction.py" />
         <option value="$PROJECT_DIR$/ssn_noise_reduction.py" />
+        <option value="$PROJECT_DIR$/TextExtraction.py" />
         <option value="$PROJECT_DIR$/Licence_Details.py" />
+        <option value="$PROJECT_DIR$/json_creation.py" />
+        <option value="$PROJECT_DIR$/Paystub.py" />
         <option value="$PROJECT_DIR$/iDocufy_Api.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="793" />
+    <option name="x" value="-7" />
     <option name="width" value="814" />
     <option name="height" value="867" />
   </component>
@@ -146,6 +98,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -158,7 +111,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -187,7 +139,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.TextExtraction (1)">
+  <component name="RunManager" selected="Python.json_creation">
     <configuration name="DEMO" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -282,10 +234,10 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.iDocufy_Api" />
-        <item index="1" class="java.lang.String" itemvalue="Python.TextExtraction (1)" />
-        <item index="2" class="java.lang.String" itemvalue="Python.trial" />
-        <item index="3" class="java.lang.String" itemvalue="Python.json_creation" />
+        <item index="0" class="java.lang.String" itemvalue="Python.json_creation" />
+        <item index="1" class="java.lang.String" itemvalue="Python.iDocufy_Api" />
+        <item index="2" class="java.lang.String" itemvalue="Python.TextExtraction (1)" />
+        <item index="3" class="java.lang.String" itemvalue="Python.trial" />
         <item index="4" class="java.lang.String" itemvalue="Python.DEMO" />
       </list>
     </recent_temporary>
@@ -399,29 +351,36 @@
       <option name="project" value="LOCAL" />
       <updated>1512657937361</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Initial Changes">
+      <created>1512726808954</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1512726808954</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15167095" sideWeight="0.49052134" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40809768" sideWeight="0.49052134" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.5051414" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32837838" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42297298" sideWeight="0.4922879" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.49485862" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39459458" sideWeight="0.4922879" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32837838" sideWeight="0.4974293" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19987147" sideWeight="0.5094787" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38513514" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32837838" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -436,205 +395,64 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/iDocufy_Api.py</url>
+          <line>31</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Licence_Details.py</url>
+          <line>290</line>
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Licence_Details.py</url>
           <line>197</line>
-          <option name="timeStamp" value="43" />
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/iDocufy_Api.py</url>
+          <line>19</line>
+          <option name="timeStamp" value="55" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="45" />
+      <option name="time" value="56" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/json_creation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="19" column="22" lean-forward="false" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-          <folding>
-            <element signature="e#417#667#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/json_value.py" />
-    <entry file="file://$PROJECT_DIR$/static/1512550926713download.jpeg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512550759074would-ssn-verification-fix-us-immigration0.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512550875507download%20(1).jpeg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512550899245download%20(2).jpeg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512550954301download%20(1).jpeg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512551180633images%20(1).jpeg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512553468197SSN%20example%20021717.bmp">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512553605568sscard2_1_.543d476e5eb4c.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512553757653SSN%20example%20021717.bmp">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512554169591SSN%20example%20021717.bmp">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512554315377SSN%202%200828171.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512554535195SSN%20example%20021717.bmp">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512554800855sscard2_1_.543d476e5eb4c.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512554725124SSN%20example%20021717.bmp">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512554638350SSN%20example%20021717.bmp">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512554821374SSN%20example%20021717.bmp">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512555049699SSN%20example%20021717.bmp">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512554966116sscard2_1_.543d476e5eb4c.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512555630819SSN%20example%20021717.bmp">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512555980298SSN%20example%20021717.bmp">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512556097482would-ssn-verification-fix-us-immigration0.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512556085510SSN%20example%20021717.bmp">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512556308011SSN%20example%20021717.bmp">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512556306337download%20(1).jpeg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TextExtraction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="91" column="0" lean-forward="true" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#16#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512558256111men8.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/ssn_2_0828171.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Upload_Image/1512481054282NC%20DL%20examples%20-%20Jul%2024%202017%20-%2012-16%20PM%20-%20p1%20(1).jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trail_ssn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="548">
-          <caret line="32" column="28" lean-forward="false" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512627749774CT%20DL%20Example%20091117.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512627897354CT%20DL%20Example%20091117.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512627971709CT%20DL%20Example%20091117.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512628063851CT%20DL%20Example%20091117.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/static/1512550899245download%20(2).jpeg" />
+    <entry file="file://$PROJECT_DIR$/static/1512550954301download%20(1).jpeg" />
+    <entry file="file://$PROJECT_DIR$/static/1512551180633images%20(1).jpeg" />
+    <entry file="file://$PROJECT_DIR$/static/1512553468197SSN%20example%20021717.bmp" />
+    <entry file="file://$PROJECT_DIR$/static/1512553605568sscard2_1_.543d476e5eb4c.jpg" />
+    <entry file="file://$PROJECT_DIR$/static/1512553757653SSN%20example%20021717.bmp" />
+    <entry file="file://$PROJECT_DIR$/static/1512554169591SSN%20example%20021717.bmp" />
+    <entry file="file://$PROJECT_DIR$/static/1512554315377SSN%202%200828171.jpg" />
+    <entry file="file://$PROJECT_DIR$/static/1512554535195SSN%20example%20021717.bmp" />
+    <entry file="file://$PROJECT_DIR$/static/1512554800855sscard2_1_.543d476e5eb4c.jpg" />
+    <entry file="file://$PROJECT_DIR$/static/1512554725124SSN%20example%20021717.bmp" />
+    <entry file="file://$PROJECT_DIR$/static/1512554638350SSN%20example%20021717.bmp" />
+    <entry file="file://$PROJECT_DIR$/static/1512554821374SSN%20example%20021717.bmp" />
+    <entry file="file://$PROJECT_DIR$/static/1512555049699SSN%20example%20021717.bmp" />
+    <entry file="file://$PROJECT_DIR$/static/1512554966116sscard2_1_.543d476e5eb4c.jpg" />
+    <entry file="file://$PROJECT_DIR$/static/1512555630819SSN%20example%20021717.bmp" />
+    <entry file="file://$PROJECT_DIR$/static/1512555980298SSN%20example%20021717.bmp" />
+    <entry file="file://$PROJECT_DIR$/static/1512556097482would-ssn-verification-fix-us-immigration0.jpg" />
+    <entry file="file://$PROJECT_DIR$/static/1512556085510SSN%20example%20021717.bmp" />
+    <entry file="file://$PROJECT_DIR$/static/1512556308011SSN%20example%20021717.bmp" />
+    <entry file="file://$PROJECT_DIR$/static/1512556306337download%20(1).jpeg" />
+    <entry file="file://$PROJECT_DIR$/static/1512558256111men8.jpg" />
+    <entry file="file://$PROJECT_DIR$/static/ssn_2_0828171.jpg" />
+    <entry file="file://$PROJECT_DIR$/Upload_Image/1512481054282NC%20DL%20examples%20-%20Jul%2024%202017%20-%2012-16%20PM%20-%20p1%20(1).jpg" />
+    <entry file="file://$PROJECT_DIR$/trail_ssn.py" />
+    <entry file="file://$PROJECT_DIR$/static/1512627749774CT%20DL%20Example%20091117.jpg" />
+    <entry file="file://$PROJECT_DIR$/static/1512627897354CT%20DL%20Example%20091117.jpg" />
+    <entry file="file://$PROJECT_DIR$/static/1512627971709CT%20DL%20Example%20091117.jpg" />
+    <entry file="file://$PROJECT_DIR$/static/1512628063851CT%20DL%20Example%20091117.jpg" />
     <entry file="file://$USER_HOME$/AppData/Local/Continuum/miniconda3/envs/ML/Lib/threading.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="139">
           <caret line="861" column="0" lean-forward="false" selection-start-line="861" selection-start-column="0" selection-end-line="861" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -642,113 +460,130 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="107">
           <caret line="10" column="14" lean-forward="true" selection-start-line="6" selection-start-column="15" selection-end-line="10" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512640990986NJ%20DL%20example%20021717.bmp">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512641163505NJ%20DL%20examples%20-%20Jul%2024%202017%20-%2012-16%20PM%20-%20p5.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512641291078NC%20DL%20examples%20-%20Jul%2024%202017%20-%2012-16%20PM%20-%20p1%20(1).jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512641350622NJ%20DL%20examples%20-%20Jul%2024%202017%20-%2012-16%20PM%20-%20p5.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512641550631NJ%20DL%20Front%20101617.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512641453116NJ%20DL%20examples%20-%20Jul%2024%202017%20-%2012-16%20PM%20-%20p5.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/1512649665569PA%20DL%20example%20082817.JPG">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trial.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="1" column="163" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="163" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/static/1512640990986NJ%20DL%20example%20021717.bmp" />
+    <entry file="file://$PROJECT_DIR$/static/1512641163505NJ%20DL%20examples%20-%20Jul%2024%202017%20-%2012-16%20PM%20-%20p5.jpg" />
+    <entry file="file://$PROJECT_DIR$/static/1512641291078NC%20DL%20examples%20-%20Jul%2024%202017%20-%2012-16%20PM%20-%20p1%20(1).jpg" />
+    <entry file="file://$PROJECT_DIR$/static/1512641350622NJ%20DL%20examples%20-%20Jul%2024%202017%20-%2012-16%20PM%20-%20p5.jpg" />
+    <entry file="file://$PROJECT_DIR$/static/1512641550631NJ%20DL%20Front%20101617.jpg" />
+    <entry file="file://$PROJECT_DIR$/static/1512641453116NJ%20DL%20examples%20-%20Jul%2024%202017%20-%2012-16%20PM%20-%20p5.jpg" />
+    <entry file="file://$PROJECT_DIR$/static/1512649665569PA%20DL%20example%20082817.JPG" />
+    <entry file="file://$PROJECT_DIR$/trial.py" />
     <entry file="file://$USER_HOME$/AppData/Local/Continuum/miniconda3/envs/ML/Lib/site-packages/flask/app.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="1996" column="0" lean-forward="false" selection-start-line="1996" selection-start-column="0" selection-end-line="1996" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SSN_Details.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-427">
+        <state relative-caret-position="48">
           <caret line="4" column="27" lean-forward="false" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Licence_Details.py">
+    <entry file="file://$PROJECT_DIR$/crop_img.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="103" column="19" lean-forward="false" selection-start-line="103" selection-start-column="19" selection-end-line="103" selection-end-column="19" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#60#92#0" expanded="false" />
-            <element signature="e#3006#3637#0" expanded="false" />
-            <element signature="e#4049#4739#0" expanded="false" />
-            <element signature="e#4764#9392#0" expanded="false" />
-            <element signature="e#9421#11143#0" expanded="false" />
-            <element signature="e#10715#10794#0" expanded="false" />
-            <element signature="e#10910#11007#0" expanded="false" />
-            <element signature="e#11176#12481#0" expanded="false" />
-            <element signature="e#12522#13425#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ssn_noise_reduction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="19" column="15" lean-forward="true" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
-          <folding>
-            <element signature="e#1#14#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/noise_reduction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="37" column="13" lean-forward="false" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
+        <state relative-caret-position="240">
+          <caret line="12" column="31" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="37" selection-end-column="28" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Img_to_Text.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="9" column="29" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="28" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/vimal/my-app/routes/users.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TextExtraction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="58" column="52" lean-forward="false" selection-start-line="58" selection-start-column="52" selection-end-line="58" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ssn_noise_reduction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="15" column="4" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Licence_Details.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="235" column="47" lean-forward="false" selection-start-line="235" selection-start-column="47" selection-end-line="235" selection-end-column="47" />
+          <folding>
+            <element signature="e#60#92#0" expanded="false" />
+            <element signature="e#3777#3929#0" expanded="false" />
+            <element signature="e#3964#4124#0" expanded="false" />
+            <element signature="e#4147#4837#0" expanded="false" />
+            <element signature="e#4862#9490#0" expanded="false" />
+            <element signature="e#11580#12884#0" expanded="false" />
+            <element signature="e#12925#13828#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/json_creation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="9" column="77" lean-forward="false" selection-start-line="9" selection-start-column="77" selection-end-line="9" selection-end-column="77" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Paystub.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="68" column="87" lean-forward="false" selection-start-line="68" selection-start-column="8" selection-end-line="68" selection-end-column="87" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/iDocufy_Api.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1560">
-          <caret line="124" column="31" lean-forward="false" selection-start-line="124" selection-start-column="31" selection-end-line="124" selection-end-column="31" />
+        <state relative-caret-position="-70">
+          <caret line="139" column="66" lean-forward="true" selection-start-line="139" selection-start-column="66" selection-end-line="139" selection-end-column="66" />
           <folding>
-            <element signature="e#380#784#0" expanded="false" />
-            <element signature="e#1501#1520#0" expanded="false" />
-            <element signature="e#1750#1847#0" expanded="false" />
+            <element signature="e#0#16#0" expanded="true" />
+            <element signature="e#2024#4205#0" expanded="false" />
+            <element signature="e#4258#5777#0" expanded="false" />
           </folding>
         </state>
       </provider>

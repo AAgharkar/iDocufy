@@ -58,17 +58,17 @@ def get_licence_details1(text):
     try:
         get_licence_id=get_id(text)
         max_date, min_date, iss_date=get_date(text)
-        address,street=get_address(text)
+        address,street,state,zipcode,city,=get_address(text)
         if street==None:
            name=get_name_afterdate(text,max_date)
         else:
             name=get_name(text,street)
         # address=None
         print(get_licence_id,max_date,min_date,iss_date,address,name)
-        return get_licence_id,max_date,min_date,iss_date,address,name
+        return get_licence_id,max_date,min_date,iss_date,address,name,state,zipcode,city
     except Exception as e:
-        get_licence_id, max_date, min_date, iss_date, address, name='null','null','null','null','null','null'
-        return get_licence_id,max_date,min_date,iss_date,address,name
+        get_licence_id, max_date, min_date, iss_date, address, name,state,zipcode,city='null','null','null','null','null','null','null','null','null'
+        return get_licence_id,max_date,min_date,iss_date,address,name,state,zipcode,city
 
 def find_between_r(s, first, last):
     try:
@@ -213,10 +213,14 @@ def get_address(value):
         for item in data:
             zip_code.append("".join(item))
         print(zip_code)
-        if re.search(r"\d{2,3}\s\w*\,",number_val):
-            street=''.join(map(str, number_val.split(zip_code[0], 1)[0].split()[-4]))
+        if re.search(r'\w*\s(?=ID\s\d)',number_val):
+            code=zip_code[1]
         else:
-            street=''.join(map(str, number_val.split(zip_code[0], 1)[0].split()[-2]))
+            code=zip_code[0]
+        if re.search(r"\d{2,3}\s\w*\,",number_val):
+            street=''.join(map(str, number_val.split(code, 1)[0].split()[-4]))
+        else:
+            street=''.join(map(str, number_val.split(code, 1)[0].split()[-2]))
         address=find_between_r(text,street,zip_code[0])
 
         full_address=street +address +zip_code[0]
@@ -226,13 +230,15 @@ def get_address(value):
         if "2017 ORTIZ BETHZAIDA 3 COUNTRY HOLLOW CIRCLE SICKLERVILLE, NJ 08081-3305" in full_address:
             full_address="3 COUNTRY HOLLOW CIRCLE SICKLERVILLE, NJ 08081-3305"
             street='3 COUNTRY'
-        return full_address,street
+        state,zipcode,city=get_address_zipcode(full_address,zip_code[0])
+        full_address=find_between_r(full_address,street,city)
+        full_address=street+full_address
+        return full_address,street,state,zipcode,city
     except Exception as E:
         full_address,street=None,None
         return full_address, street
 def get_name(value,street):
     try:
-
         print("value",value)
         print("street", street)
         name = ' '.join(map(str, value.split(street, 1)[0].split()[-5:]))
@@ -282,6 +288,12 @@ def get_name_afterdate(value,date):
     except Exception as E:
         full_name = 'null'
         return full_name
-
+def get_address_zipcode(full_address,zipcode):
+    try:
+        code=zipcode.split()
+        city=''.join(map(str, full_address.split(code[0], 1)[0].split()[-1]))
+        return code[0],code[1],city
+    except Exception as e:
+        print(e)
 
 

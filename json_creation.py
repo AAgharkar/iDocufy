@@ -7,7 +7,7 @@ from google.cloud.vision import types
 
 client = vision.ImageAnnotatorClient()
 
-with io.open('static/ADP Example 101817-1.jpg', 'rb') as image_file:
+with io.open(r"C:\Users\ankitaa\Desktop\Valid Paystub\ADP Sodexo 102617-1.jpg", 'rb') as image_file:
     content = image_file.read()
 
 image = types.Image(content=content)
@@ -24,7 +24,7 @@ for text in texts[1:]:
                 for vertex in text.bounding_poly.vertices]
 
     data=({text.description:vertices})
-
+    print(data)
     # print('bounds: {}'.format(','.join(vertices)))
 #     response1={
 #         "description":text.description,
