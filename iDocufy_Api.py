@@ -66,7 +66,7 @@ def index():
             (text,licence_id, exp_date, dob, iss_date, address, name,state,zipcode,city) = output_doc.get()
             print("name",name)
             if licence_id =='null' and exp_date =='null' and dob =='null' and iss_date =='null' and address =='null' and name=='null'and state=='null'and zipcode=='null' and city=='null':
-                response = {'error_msg': "Invalid image"}
+                response = {'error_msg': "Invalid document"}
             else:
                 if name=='null':
                     name_value=[]
@@ -101,7 +101,7 @@ def index():
             print("in main",SSN_Number)
             print("in main", name)
             if SSN_Number =='null' and name =='null':
-                response={'error_msg':"Invalid image"}
+                response={'error_msg':"Invalid document"}
             else:
                 if name=='null':
                     name_value.append('-')
@@ -124,13 +124,14 @@ def index():
 
                 response = content
                 response['error_msg'] = 'null'
-        elif "Paystub" in json_val[doc_id]:
-            gross_pay, net_pay, pay_frequency, Employer_name, Employer_City, Employer_State=Paystub.get_details(filename)
-            if gross_pay =='null' and net_pay =='null' and pay_frequency =='null' and Employer_name =='null' and Employer_City =='null' and Employer_State=='null':
-                response = {'error_msg': "Invalid image"}
+        elif "PayStub" in json_val[doc_id]:
+            print(filename)
+            gross_pay, net_pay, pay_frequency, Employer_name, Employer_City, Employer_State,employment_Start_date=Paystub.get_details(filename)
+            if gross_pay =='null' and net_pay =='null' and pay_frequency =='null' and Employer_name =='null' and Employer_City =='null' and Employer_State=='null' and'employment_Start_date'=='null':
+                response = {'error_msg': "Invalid document"}
             else:
                 add = {'gross_pay': gross_pay, 'net_pay': net_pay, 'pay_frequency':pay_frequency , 'employer_name': Employer_name,
-                       'employer_city': Employer_City, 'employer_state': Employer_State}
+                       'employer_city': Employer_City, 'employer_state': Employer_State,"employment_Start_date":employment_Start_date,'position':'null'}
                 actual_value = list(add.keys())
                 actual_value = sorted(actual_value)
                 print("actual", actual_value)
@@ -148,5 +149,5 @@ def index():
         return json.dumps(response)
 
 if __name__ == '__main__':
-    app.run(host='192.168.9.120',port=5013,debug=True)
+    app.run(host='192.168.0.154',port=5013,debug=True)
 

@@ -20,8 +20,8 @@ def get_doc(path):
     output_doc.put(text)
 def get_details(text):
     print(text)
-    licence_id, max_date, min_date, iss_date, address,name = Licence_Details.get_licence_details1(text)
-    details.put((licence_id, max_date, min_date, iss_date, address,name))
+    get_licence_id, max_date, min_date, iss_date, address, name, state, zipcode, city = Licence_Details.get_licence_details1(text)
+    details.put((get_licence_id,max_date,min_date,iss_date,address,name,state,zipcode,city))
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -54,7 +54,26 @@ def show():
                     text= output_doc.get()
                     thread = threading.Thread(target=get_details, args=(text,))
                     thread.start()
-                    (licence_id, max_date, min_date, iss_date, address,name)=details.get()
+                    (licence_id,max_date,min_date,iss_date,address,name,state,zipcode,city)=details.get()
+                    name_value=[]
+                    if name == '':
+                        name_value.append('-')
+                        name_value.append('-')
+                        name_value.append('-')
+                    else:
+                        name_value = name.split()
+                    if len(name_value) > 2:
+                        return render_template('Show.html', state=state, zipcode=zipcode, city=city, text=text,
+                                               image=tail, licence_id=licence_id, max_date=max_date, min_date=min_date,
+                                               iss_date=iss_date, address=address, SSN_Number=SSN_Number,
+                                               first_name=name_value[1], last_name=name_value[0],
+                                               middle_name=name_value[2])
+                    else:
+                        return render_template('Show.html', state=state, zipcode=zipcode, city=city, text=text,
+                                               image=tail, licence_id=licence_id, max_date=max_date, min_date=min_date,
+                                               iss_date=iss_date, address=address, SSN_Number=SSN_Number,
+                                               first_name=name_value[0], last_name=name_value[1],
+                                               middle_name="-")
                 elif options == 'SSN':
                     image_path = ssn_noise_reduction.image_conversion_smooth(image)
                     head, tail = os.path.split(image_path)
@@ -79,7 +98,7 @@ def show():
                 error = "Please Upload jpg or png image"
                 return render_template('Index.html', error=error)
 
-            return render_template('Show.html', text=text,image=tail,licence_id=licence_id,max_date=max_date,min_date=min_date,iss_date=iss_date,address=address,SSN_Number=SSN_Number,name=name)
+            return render_template('Show.html', state=state,zipcode=zipcode,city=city,text=text,image=tail,licence_id=licence_id,max_date=max_date,min_date=min_date,iss_date=iss_date,address=address,SSN_Number=SSN_Number,name=name)
     except Exception as E:
         print(E)
         error = "Unable to detect"
@@ -92,4 +111,4 @@ if __name__ == "__main__":
 
     sess.init_app(app)
     # app.run(host='localhost', port=5004, debug=True, threaded=True)
-    app.run(host='192.168.9.120', port=5004, debug=True,threaded=True)
+    app.run(host='192.168.9.91', port=5004, debug=True,threaded=True)
